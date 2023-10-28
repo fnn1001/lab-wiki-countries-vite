@@ -17,6 +17,10 @@ function CountryDetailsPage() {
             .catch((error) => console.error('Error fetching country details:', error));
     }, [countryId]); // Re-run the effect when the countryId changes
 
+    const getFullCountryName = (abbreviation) => {
+        return countries.find((country) => country.alpha3Code === abbreviation).name.common;
+    }
+
     return (
         <div className="container mt-5">
             {Object.keys(country).length > 0 ? ( // Check if country data is available
